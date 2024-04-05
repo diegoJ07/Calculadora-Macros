@@ -54,52 +54,48 @@ function actualizarListaAlimentos() {
     });
 }
 
-const clientId = '8f1fc4c66e17464bb0d213e739b1de53';
-const clientSecret = '4fc36c19a09a4e2b82b7e89c8d959ce7';
-
-function obtenerAccessToken() {
-    const url = 'https://oauth.fatsecret.com/connect/token';
-
-    const datos = {
-        grant_type: 'client_credentials',
-        client_id: clientId,
-        client_secret: clientSecret
-    };
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datos)
-    })
-    .then(response => response.json())
-    .then(data => {
-        const accessToken = data.access_token;
-        console.log('Access Token:', accessToken);
-
-        // Una vez que tengas el Access Token, puedes utilizarlo para hacer solicitudes a la API de FatSecret
-        obtenerInformacionNutricional('manzana', accessToken); // Ejemplo de solicitud para obtener información nutricional de una manzana
-    })
-    .catch(error => {
-        console.error('Error al obtener Access Token:', error);
-    });
-}
-
-function obtenerInformacionNutricional(alimento, accessToken) {
-    const url = `https://platform.fatsecret.com/rest/server.api?method=foods.search&format=json&search_expression=${alimento}&oauth_consumer_key=${clientId}&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&oauth_token=${accessToken}`;
+function obtenerInformacionNutricional(alimento) {
+    const apiKey = 'eQeX87rm1yW8bJG1JLfZ4iKN7mEtPgTAA3wEekR5';
+    const url = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${apiKey}&query=${alimento}`;
 
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            // Procesar los datos recibidos de la API
             console.log('Datos de la búsqueda:', data);
-            // Aquí puedes extraer la información nutricional del alimento
+            mostrarResultados(data); // Llamar a la función para mostrar los resultados
         })
         .catch(error => {
             console.error('Error al obtener información nutricional:', error);
         });
 }
 
-// Llamar a la función para obtener el Access Token al cargar la página
-obtenerAccessToken();
+
+
+function buscarInformacionNutricional() {
+    console.log("Función buscarInformacionNutricional() activada.");
+    var alimento = document.getElementById("alimento-busqueda").value;
+    
+    // Llamar a la función para obtener información nutricional del alimento
+    obtenerInformacionNutricional(alimento);
+}
+function mostrarResultados(data) {
+    // Limpiar resultados anteriores
+    var resultadosDiv = document.getElementById("resultados");
+    resultadosDiv.innerHTML = "";
+
+    // Mostrar los nuevos resultados
+    var listaResultados = document.createElement("ul");
+    data.foods.forEach(function(alimento) {
+        var item = document.createElement("li");
+        item.textContent = alimento.description;
+        listaResultados.appendChild(item);
+    });
+    resultadosDiv.appendChild(listaResultados);
+}
+
+
