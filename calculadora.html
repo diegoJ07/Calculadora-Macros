@@ -12,17 +12,18 @@
 <header>
     <nav class="navbar">
         <div class="navbar-logo">
-            <img src="./logo.png" alt="Logo">
+            <img src="logo.png" alt="Logo">
         </div>
         <div class="navbar-login">
             <button id="login-button">Iniciar Sesión <i class="fa fa-angle-down"></i></button>
             <div class="login-box">
-                <input type="text" placeholder="Usuario">
-                <input type="password" placeholder="Contraseña">
-                <button>Iniciar Sesión</button>
+                <input id="usuario" type="text" placeholder="Usuario">
+                <input id="contraseña" type="password" placeholder="Contraseña">
+                <button onclick="validarInicioSesion()">Iniciar Sesión</button>
             </div>
         </div>
     </nav>
+    
 </header>
 <body>
     <section class="body-general">
