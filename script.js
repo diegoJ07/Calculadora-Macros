@@ -1,132 +1,226 @@
-var alimentosConsumidos = []; // Declarar alimentosConsumidos como un array vacío en el ámbito global
+document.addEventListener('DOMContentLoaded', function() {
+    const questions = document.querySelectorAll('.question-container');
 
-// Resto del código...
+    questions.forEach(question => {
+        question.addEventListener('click', () => {
+            const isOpen = question.classList.contains('clicked');
+            const answers = document.querySelectorAll('.answer');
 
+            // Cerrar todas las preguntas abiertas excepto la actual
+            questions.forEach(q => {
+                if (q !== question) {
+                    q.classList.remove('clicked');
+                }
+            });
 
-// Definir los alimentos disponibles
-var alimentos = [
-    { id: 1, nombre: "Aceite de aguacate una cucharada sopera", proteina: 0, carb: 0, grasa: 10, racion: 10 },
-    { id: 2, nombre: "Aceite de coco una cucharadita de café", proteina: 0, carb: 0, grasa: 5, racion: 5 },
-    { id: 3, nombre: "Aceite de oliva virgen extra una cucharada sopera", proteina: 0, carb: 0, grasa: 10, racion: 10 },
-    { id: 4, nombre: "Aceite de oliva virgen extra una cucharadita de café", proteina: 0, carb: 0, grasa: 5, racion: 5 },
-    { id: 5, nombre: "Aceitunas negras sin hueso (Hacendado)", proteina: 16, carb: 0, grasa: 100, racion: 100 },
-    { id: 6, nombre: " Arroz bomba (El Cazador)", proteina: 7.96, carb: 76.8, grasa: 0.5, racion: 100 },
-    { id: 7, nombre: "Arroz blanco (SOS)", proteina: 6.7, carb: 77, grasa: 1.1, racion: 100 },
-    { id: 8, nombre: "Arroz blanco precocido congelado (Hacendado)", proteina: 4.51, carb: 46.76, grasa: 0.5, racion: 167 }
+            // Cerrar todas las respuestas abiertas excepto la actual
+            answers.forEach(answer => {
+                if (answer.parentElement !== question) {
+                    answer.classList.remove('active');
+                }
+            });
 
+            // Alternar la clase "clicked" en la pregunta actual
+            question.classList.toggle('clicked');
 
-];
-
-// Función para actualizar el select de alimentos en el HTML
-function actualizarSelectAlimentos() {
-    var selectAlimentos = document.getElementById("alimento-id");
-
-    // Limpiar el select antes de agregar los nuevos elementos
-    selectAlimentos.innerHTML = "";
-
-    // Agregar cada alimento como una opción en el select
-    alimentos.forEach(function(alimento) {
-        var option = document.createElement("option");
-        option.value = alimento.id;
-        option.textContent = alimento.nombre;
-        selectAlimentos.appendChild(option);
-    });
-}
-
-// Función para calcular la cantidad de macros consumidos y faltantes
-function calcularMacros() {
-    var edad = parseInt(document.getElementById("edad").value);
-    var peso = parseFloat(document.getElementById("peso").value);
-    var altura = parseFloat(document.getElementById("altura").value);
-    var actividad = parseFloat(document.getElementById("actividad").value);
-
-    // Fórmula para calcular el metabolismo basal (TMB)
-    var tmb = 10 * peso + 6.25 * altura - 5 * edad;
-
-    // Fórmula para ajustar el TMB según la actividad física
-    var mantenimiento = tmb * actividad;
-
-    // Definir los porcentajes de macros (ejemplo: 40% carbohidratos, 30% proteínas, 30% grasas)
-    var carbPorcentaje = 40;
-    var proteinaPorcentaje = 30;
-    var grasaPorcentaje = 30;
-
-    // Calcular la cantidad de cada macro en gramos
-    var carbGramos = mantenimiento * carbPorcentaje / 400;
-    var proteinaGramos = mantenimiento * proteinaPorcentaje / 400;
-    var grasaGramos = mantenimiento * grasaPorcentaje / 900;
-
-    // Calcular la cantidad total de carbohidratos, proteínas y grasas consumidos
-    var carbConsumidos = 0;
-    var proteinaConsumidos = 0;
-    var grasaConsumidos = 0;
-
-    // Obtener los alimentos seleccionados y sumar sus macros
-    alimentosConsumidos.forEach(function(alimento) {
-        var alimentoInfo = alimentos.find(function(item) {
-            return item.id === alimento.id;
+            // Alternar la clase "active" en la respuesta actual
+            const answer = question.querySelector('.answer');
+            answer.classList.toggle('active');
         });
-
-        if (alimentoInfo) {
-            carbConsumidos += alimentoInfo.carb * alimento.cantidad / alimentoInfo.racion;
-            proteinaConsumidos += alimentoInfo.proteina * alimento.cantidad / alimentoInfo.racion;
-            grasaConsumidos += alimentoInfo.grasa * alimento.cantidad / alimentoInfo.racion;
-        }
+        
+        // Detener la propagación del clic en la respuesta
+        const answer = question.querySelector('.answer');
+        answer.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
     });
+});
 
-    // Calcular la cantidad faltante de cada macro
-    var carbFaltantes = Math.max(carbGramos - carbConsumidos, 0);
-    var proteinaFaltantes = Math.max(proteinaGramos - proteinaConsumidos, 0);
-    var grasaFaltantes = Math.max(grasaGramos - grasaConsumidos, 0);
-
-    // Mostrar los resultados
-    var resultado = "Para mantener tu peso, necesitas consumir aproximadamente:";
-    resultado += "<br>Carbohidratos: " + carbConsumidos.toFixed(1) + " g (Faltan " + carbFaltantes.toFixed(1) + " g)";
-    resultado += "<br>Proteínas: " + proteinaConsumidos.toFixed(1) + " g (Faltan " + proteinaFaltantes.toFixed(1) + " g)";
-    resultado += "<br>Grasas: " + grasaConsumidos.toFixed(1) + " g (Faltan " + grasaFaltantes.toFixed(1) + " g)";
-
-    document.getElementById("resultado").innerHTML = resultado;
-}
-
-// Función para agregar un alimento a la lista de alimentos consumidos
-function agregarAlimento() {
-    var alimentoId = parseInt(document.getElementById("alimento-id").value);
-    var cantidad = parseFloat(document.getElementById("cantidad").value);
-
-    // Encontrar el alimento seleccionado
-    var alimento = alimentos.find(function(item) {
-        return item.id === alimentoId;
-    });
-
-    // Si el alimento está definido y la cantidad es válida
-    if (alimento && !isNaN(cantidad) && cantidad > 0) {
-        // Agregar el alimento a la lista de alimentos consumidos
-        alimentosConsumidos.push({ id: alimento.id, nombre: alimento.nombre, cantidad: cantidad });
-        // Actualizar la lista de alimentos consumidos en la interfaz
-        actualizarListaAlimentos();
-        // Calcular los macros después de agregar el alimento
-        calcularMacros();
+// Función para mostrar u ocultar la caja de inicio de sesión
+function toggleLoginBox() {
+    var loginBox = document.querySelector(".login-box");
+    if (loginBox.style.display === "block") {
+        loginBox.style.display = "none";
     } else {
-        alert("Por favor, seleccione un alimento y especifique una cantidad válida.");
+        loginBox.style.display = "block";
     }
 }
 
-// Función para actualizar la lista de alimentos consumidos en la interfaz
-function actualizarListaAlimentos() {
-    var listaAlimentos = document.getElementById("lista-alimentos");
-    // Limpiar la lista antes de agregar los nuevos elementos
-    listaAlimentos.innerHTML = "";
+// Event listener para mostrar u ocultar la caja de inicio de sesión al hacer clic en el botón
+document.getElementById("login-button").addEventListener("mousedown", function(event) {
+    event.stopPropagation(); // Evita que el evento de clic se propague al documento
+    toggleLoginBox();
+});
 
-    // Agregar cada alimento consumido como un elemento de lista
-    alimentosConsumidos.forEach(function(alimento) {
-        var item = document.createElement("li");
-        item.textContent = alimento.nombre + ": " + alimento.cantidad + " g";
-        listaAlimentos.appendChild(item);
+// Event listener para cerrar la caja de inicio de sesión al hacer clic fuera de ella
+document.addEventListener("mousedown", function(event) {
+    var loginBox = document.querySelector(".login-box");
+    if (!loginBox.contains(event.target) && event.target !== document.getElementById("login-button")) {
+        loginBox.style.display = "none";
+    }
+});
+
+// Función para validar el inicio de sesión
+function validarInicioSesion() {
+    var usuario = document.getElementById("usuario").value;
+    var contraseña = document.getElementById("contraseña").value;
+
+    // Aquí defines la URL del archivo CSV
+    var urlCSV = "usuarios.csv";
+
+    // Leer el archivo CSV
+    Papa.parse(urlCSV, {
+        download: true,
+        complete: function(result) {
+            console.log("CSV leído:", result); // Agregar este mensaje de consola
+            // Recorrer los datos del CSV
+            for (var i = 1; i < result.data.length; i++) {
+                var usuarioCSV = result.data[i][1];
+                var contraseñaCSV = result.data[i][2];
+
+                // Verificar si el usuario y la contraseña coinciden con los del CSV
+                if (usuario === usuarioCSV && contraseña === contraseñaCSV) {
+                    alert("Inicio de sesión exitoso");
+                    console.log("Redireccionando..."); // Agregar este mensaje de consola
+                    // Redirigir al usuario a otra página
+                    window.location.href = "micuenta.html";
+                    return; // Salir de la función después de iniciar sesión exitosamente
+                }
+            }
+            // Si no se encontró el usuario en el CSV
+            alert("Usuario o contraseña incorrectos");
+        }
     });
 }
 
-// Event listener para el botón "Calcular"
-document.getElementById("calcular-btn").addEventListener("click", calcularMacros);
 
-// Inicializar el select de alimentos al cargar la página
-actualizarSelectAlimentos();
+
+// Event listener para realizar la validación al hacer clic en el botón de iniciar sesión
+document.querySelector(".login-box button").addEventListener("click", function(event) {
+    event.preventDefault(); // Evitar el envío del formulario
+    validarInicioSesion();
+});
+
+
+
+function mostrarCalendario() {
+    var calendario = document.getElementById("calendario");
+    if (calendario.style.display === "none") {
+        calendario.style.display = "block";
+        generarCalendario(); // Llamada a la función para generar el calendario
+    } else {
+        calendario.style.display = "none";
+    }
+}
+
+function generarCalendario() {
+    var today = new Date();
+    var currentMonth = today.getMonth();
+    var currentYear = today.getFullYear();
+
+    var calendar = document.getElementById("calendar");
+    calendar.innerHTML = "";
+
+    var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    var monthDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    for (var i = 1; i <= monthDays; i++) {
+        var day = document.createElement("div");
+        day.className = "day";
+        day.textContent = i;
+        day.addEventListener("click", function() {
+            seleccionarFecha(this.textContent, currentMonth, currentYear);
+        });
+        calendar.appendChild(day);
+    }
+}
+
+function seleccionarFecha(day, month, year) {
+    var selectedDate = new Date(year, month, day);
+    document.getElementById("fecha").value = selectedDate.toLocaleDateString();
+    document.getElementById("calendario").style.display = "none";
+}
+
+
+function mostrarMenuTipoDia() {
+    var menuTipoDia = document.getElementById("tipoDia");
+    var tipoDia = menuTipoDia.value;
+    if (tipoDia === "entrenamiento") {
+        document.getElementById("tipoDia").value = "descanso";
+    } else {
+        document.getElementById("tipoDia").value = "entrenamiento";
+    }
+}
+
+function seleccionarTipoDia() {
+    var tipoDia = document.getElementById("tipoDia").value;
+    var selectElement = document.getElementById("tipoDia");
+
+    if (tipoDia === "descanso") {
+        selectElement.style.backgroundColor = "#F8D7DA";
+    } else {
+        selectElement.style.backgroundColor = ""; // Restablecer el color de fondo
+    }
+}
+
+function seleccionarOpcion() {
+    var opcion = document.getElementById("cuandoEntrenas").value;
+
+    // Ocultar todas las tablas
+    var todasLasTablas = document.querySelectorAll('.macros-table');
+    todasLasTablas.forEach(tabla => {
+        tabla.style.display = 'none';
+    });
+
+    // Mostrar las tablas según la opción seleccionada
+    switch (opcion) {
+        case "ayunas":
+            document.getElementById("intraentreno").style.display = 'block';
+            document.getElementById("postentreno").style.display = 'block';
+            document.getElementById("comida1").style.display = 'block';
+            document.getElementById("comida2").style.display = 'block';
+            document.getElementById("comida3").style.display = 'block';
+            document.getElementById("comida4").style.display = 'block';
+            break;
+        case "despuesComida1":
+            document.getElementById("comida5").style.display = 'block';
+            document.getElementById("intraentreno").style.display = 'block';
+            document.getElementById("postentreno").style.display = 'block';
+            document.getElementById("comida6").style.display = 'block';
+            document.getElementById("comida7").style.display = 'block';
+            document.getElementById("comida8").style.display = 'block';
+            break;
+        case "despuesComida2":
+            document.getElementById("comida9").style.display = 'block';
+            document.getElementById("comida10").style.display = 'block';
+            document.getElementById("intraentreno").style.display = 'block';
+            document.getElementById("postentreno").style.display = 'block';
+            document.getElementById("comida11").style.display = 'block';
+            document.getElementById("comida12").style.display = 'block';
+            break;
+        case "despuesComida3":
+            document.getElementById("comida13").style.display = 'block';
+            document.getElementById("comida14").style.display = 'block';
+            document.getElementById("comida15").style.display = 'block';
+            document.getElementById("intraentreno").style.display = 'block';
+            document.getElementById("postentreno").style.display = 'block';
+            document.getElementById("comida16").style.display = 'block';
+            break;
+        default:
+            break;
+    }
+}
+// Recuperar valores almacenados del almacenamiento local
+var proteinaNecesaria = localStorage.getItem('proteinas');
+var carbohidratoNecesario = localStorage.getItem('carbohidratos');
+var grasaNecesaria = localStorage.getItem('grasas');
+
+// Actualizar las tablas de dieta con los valores recuperados
+document.getElementById("proteinaComida1").textContent = proteinaNecesaria + " g";
+document.getElementById("carbohidratoComida1").textContent = carbohidratoNecesario + " g";
+document.getElementById("grasaComida1").textContent = grasaNecesaria + " g";
+
+

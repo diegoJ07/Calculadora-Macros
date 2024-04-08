@@ -1,46 +1,576 @@
-.container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+@font-face {
+    font-family: 'miedinger'; /* Nombre que le darás a tu fuente */
+    src: url('/fonts/miedinger-bold.ttf') format('truetype'); /* Ruta de la fuente */
+    /* Otras propiedades opcionales, como font-weight y font-style, si es necesario */
+}
+.navbar-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.container h1 {
-    text-align: center;
+.navbar-menu li {
+    display: inline-block;
+    margin-right: 10px;
 }
 
-.container div {
-    margin-bottom: 10px;
+.navbar-menu li a {
+    text-decoration: none;
+    color: #FF6620;
 }
 
-.container label {
+.admin-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.navbar-administration:hover .admin-menu {
     display: block;
 }
 
-.container input,
-.container select {
-    width: 100%;
-    padding: 5px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+.admin-menu ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.container button {
-    width: 100%;
+.admin-menu ul li {
     padding: 10px;
-    background-color: #007bff;
+}
+
+.admin-menu ul li a {
+    color: #FF6620;
+    text-decoration: none;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #212529;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: auto; /* Añadimos esta propiedad para que ocupe el 100% del ancho horizontal */
+}
+
+.body-general {
+    padding: 20px 200px; /* Padding de 20px arriba y abajo, 200px a los lados */
+    background-color: #FFFFFF;
+    color: #212529; /* Cambiar color de texto a un gris más oscuro */
+    line-height: 1.6; /* Aumentar el espaciado entre líneas para una mejor legibilidad */
+    margin: 0; /* Eliminar márgenes predeterminados */
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.container {
+    max-width: calc(100% - 60px); /* Ancho máximo del contenido, restando 60px para el espacio a los lados */
+    margin: 0 auto; /* Centrar el contenido horizontalmente */
+}
+h2{
+    font-size: calc(1.325rem + .9vw);
+    font-weight: 700!important; /* Hacer que los encabezados sean más audaces */
+    font: 'Montserrat', helvetica, arial, sans-serif;
+    color: #212529; /* Cambiar color de encabezados a un gris más oscuro */
+    margin: 0px 0px 24px;
+    margin-bottom: 3rem!important; /* Agregar espacio inferior a los encabezados */
+    font-family: 'miedinger', Arial, Helvetica, sans-serif;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+h3 {
+    font-weight: normal;
+    font: 'Montserrat', Helvetica, arial, sans-serif;
+    font-size: 22.4px;
+}
+h2.mb-4 {
+    color: #212529;
+    font-size: 30px;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    margin: 0 43px 24px;
+    padding: 0 32px;
+}
+
+.navbar-logo img {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+}
+
+.navbar-login button {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 0.5rem; /* Añadir borde redondeado */
+    border: 1px solid white; /* Añadir borde blanco */
+    transition: background-color 0.3s ease; /* Agregar transición para el cambio de color de fondo */
+}
+
+.navbar-login button:hover {
+    background-color: #FFFFFF; /* Cambiar el color de fondo al hacer hover */
+    color: #212529; /* Cambiar el color del texto al hacer hover */
+}
+
+
+.login-box {
+    display: none; /* Oculta la caja de inicio de sesión inicialmente */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.login-box input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.login-box button {
+    background-color: #212529;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
-.container button:hover {
-    background-color: #0056b3;
+/* Mostrar la caja de inicio de sesión al hacer clic en el botón */
+#login-button:focus + .login-box,
+.login-box:focus-within {
+    display: block;
 }
 
-#resultado {
-    margin-top: 20px;
-    font-weight: bold;
+/* Estilos para el título "Dieta" */
+.dieta-title {
+    text-align: center;
+    font-family: "miedinger",Arial,sans-serif;
+    font-weight: normal; /* Esto quita la negrita */
 }
+
+
+/* Estilos para los elementos de la dieta */
+.elige-fecha,
+.tipo-dia,
+.cuando-entrenas {
+    display: inline-block; /* Hacer que los elementos se comporten como bloques en línea */
+    vertical-align: top; /* Alinear los elementos verticalmente por arriba */
+    width: 200px; /* Ancho de los elementos */
+    text-align: right; /* Alinear el texto a la derecha */
+    margin-right: 20px; /* Espacio a la derecha */
+    margin-bottom: 20px; /* Espacio hacia abajo */
+}
+
+#tipoDia {
+    background-color: #D1E7DD; /* Color de fondo verde por defecto */
+    padding: 10px; /* Aumenta el espacio interno */
+    font-size: 16px; /* Ajusta el tamaño del texto */
+    width: 200px; /* Ajusta el ancho del select */
+}
+
+/* Estilo para el input de fecha */
+#fecha {
+    padding: 10px; /* Aumenta el espacio interno */
+    font-size: 16px; /* Ajusta el tamaño del texto */
+    width: 200px; /* Ajusta el ancho del input */
+    margin-right: 20px; /* Espacio a la derecha */
+    margin-left: 20px; /* Espacio a la izquierda */
+}
+
+/* Estilo para el select de Tipo de Día */
+#tipoDia {
+    padding: 10px; /* Aumenta el espacio interno */
+    font-size: 16px; /* Ajusta el tamaño del texto */
+    width: 200px; /* Ajusta el ancho del select */
+    margin-right: 20px; /* Espacio a la derecha */
+    margin-left: 20px; /* Espacio a la izquierda */
+}
+
+/* Estilo para el select de Cuando Entrenas */
+#cuandoEntrenas {
+    padding: 10px; /* Aumenta el espacio interno */
+    font-size: 16px; /* Ajusta el tamaño del texto */
+    width: 200px; /* Ajusta el ancho del select */
+    margin: 0 auto 20px auto; /* Margen automático izquierdo y derecho, 20px abajo */
+}
+
+#tipoDia,
+#cuandoEntrenas,
+#fecha {
+    vertical-align: top; /* Alinear los selects verticalmente por arriba */
+    margin-bottom: 20px;
+}
+
+
+/* Elimina el color de fondo predeterminado de la opción seleccionada */
+#tipoDia option:checked {
+    background-color: initial;
+}
+
+/* Establece el color de fondo para "Es día de Descanso" como rojo */
+#tipoDia option[value="descanso"]:checked {
+    background-color: #F8D7DA;
+}
+
+
+.day {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    float: left;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #f0f0f0;
+}
+
+.macros-table {
+    /* Agrega estos estilos */
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+.formulario {
+    /* Agrega estos estilos */
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+
+.macros-table h3 {
+    font-family: 'montserrat';
+    background-color: black; /* Fondo negro para el título */
+    color: #FFFFFF; /* Texto blanco para el título */
+    border: solid; /* Borde naranja de 10px en la parte inferior */
+    border-radius: 15px;
+    padding: 10px; /* Espacio alrededor del título */
+    margin: 0; /* Eliminar el margen predeterminado */
+}
+
+.macros-container {
+    display: flex;
+    flex-direction: column; /* Alinea las tablas una debajo de la otra */
+}
+
+.macros-table table {
+    width: 100%;
+    height: 100%; /* Asegura que la tabla ocupe toda la altura de su contenedor */
+    border-collapse: collapse;
+}
+
+.macros-table th, .macros-table td {
+    background-color: #FFFFFF; /* Fondo blanco para las celdas */
+    color: #212529; /* Texto negro para las celdas */
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.macros-table th {
+    background-color: #f2f2f2;
+}
+
+/* Estilo para el hr */
+hr {
+    width: 1050px; /* Ancho del hr al 100% */
+    margin: 10px; /* Eliminar el margen predeterminado */
+}
+/* Estilos para el formulario */
+
+
+
+/* Estilos para los elementos del formulario */
+.formulario label,
+.formulario select,
+.formulario input,
+.formulario button {
+    display: block; /* Convertir los elementos en bloques para alinearlos verticalmente */
+    margin-bottom: 10px; /* Espacio entre los elementos */
+}
+
+
+/* Estilos para el título "Suplementación" */
+.suplementacion-title {
+    text-align: center;
+    font-family: "miedinger", Arial, sans-serif;
+}
+
+/* Estilos para el título "Suplementación Actual" */
+.suplementacion-actual {
+    margin-left: 20px; /* Espacio a la izquierda */
+}
+
+/* Estilos para los párrafos <p> y los elementos <strong> */
+.content-suplementacion strong,
+.content-aminoacidos strong,
+.content-creatina strong {
+    color: #FF6620; /* Color del texto */
+}
+
+/* Estilos para el contenedor principal */
+/* Estilos para el contenedor principal */
+.body-content {
+    display: flex; /* Utilizar el modelo de caja flexible */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan a la siguiente fila */
+    justify-content: space-between; /* Distribuir los elementos equitativamente en la línea */
+}
+
+/* Estilos para los divs */
+.content-suplementacion,
+.content-aminoacidos,
+.content-creatina {
+    border: 1px solid #ccc; /* Borde para cada div */
+    border-radius: 5px; /* Border radius */
+    padding: 20px; /* Espacio alrededor del contenido */
+    margin-bottom: 20px; /* Espacio inferior entre los contenedores */
+    box-sizing: border-box; /* Incluir el padding y el borde en el ancho del elemento */
+    width: calc(33.33% - 20px); /* Ancho de los divs (33.33% del contenedor menos el espacio entre ellos) */
+    flex-grow: 1; /* Permitir que los divs crezcan para ocupar el espacio disponible */
+    flex-basis: calc(50% - 20px); /* Establece el ancho base de cada div al 50% del contenedor */
+    box-sizing: border-box; /* Incluir el padding y el borde en el ancho del elemento */
+}
+
+
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuye los elementos a lo largo del contenedor con el espacio entre ellos */
+}
+
+
+/* Estilos para los títulos dentro de los contenedores */
+.aceite-product,
+.aminoacidos-product,
+.creatina-product {
+    color: #FF6620; /* Color del texto */
+}
+
+/* Estilos para los títulos "Enlaces" */
+.enlaces {
+    color: #FF6620; /* Color del texto */
+}
+
+.content-aminoacidos,
+.content-creatina,
+.content-suplementacion {
+    position: relative; /* Permite posicionar el hr de forma absoluta */
+    margin-right: 20px; /* Agrega un espacio entre los divs */
+    margin-bottom: 20px; /* Agrega un espacio entre los divs */
+}
+
+.content-aminoacidos,
+.content-creatina,
+.content-suplementacion:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último div en la fila */
+}
+
+.content-suplementacion .content-hr {
+    width: 100%;
+    margin: 0 auto; /* Esto centrará el hr horizontalmente dentro de su contenedor */
+}
+
+.content-aminoacidos .content-hr {
+    width: 100%;
+    margin: 0 auto; /* Esto centrará el hr horizontalmente dentro de su contenedor */
+}
+
+.content-creatina .content-hr {
+    width: 100%;
+    margin: 0 auto; /* Esto centrará el hr horizontalmente dentro de su contenedor */
+}
+
+img {
+    max-width: 100%; /* Hacer que las imágenes se ajusten al ancho del contenedor */
+    height: auto; /* Mantener la proporción de aspecto de las imágenes */
+    margin-bottom: 20px; /* Agregar espacio inferior a las imágenes */
+}
+section {
+    background-color: #f9f9f9; /* Agregar un color de fondo para las secciones */
+    padding: 40px; /* Agregar espacio alrededor del contenido de la sección */
+    margin-bottom: 30px; /* Agregar espacio inferior a las secciones */
+    border-radius: 10px; /* Agregar bordes redondeados a las secciones */
+}
+/* Estilos para el primer párrafo */
+p {
+    color: #212529;
+    font-size: 22.4px;
+}
+
+/* Estilos para los párrafos dentro de strong con la clase orange-text */
+strong.orange-text {
+    color: #FF6620;
+}
+/* Estilos para el botón del acordeón */
+.accordion-button {
+    background-color: #f8f9fa;
+    color: #212529;
+    border: none;
+}
+
+/* Estilos para el cuerpo del acordeón */
+.accordion-body {
+    color: #212529;
+    font-size: 22.4px;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    padding: 16px 20px;
+}
+
+
+/* Estilos para el texto del acordeón */
+.accordion-body p {
+    margin-bottom: 1rem;
+}
+.accordion-header button {
+    background-color: #212529; /* Color de fondo */
+}
+
+section[data-v-a3c9bf0e] {
+    background-color: #FFFFFF;
+}
+
+
+/* Estilo inicial de la pregunta y respuesta */
+.question-container {
+    background-color: transparent; /* Fondo transparente por defecto */
+    color: #FFFFFF;
+}
+
+.answer {
+    display: none; /* Oculta la respuesta por defecto */
+    background-color: #fff; /* Fondo blanco para la respuesta */
+}
+
+/* Estilo cuando se hace clic en la pregunta */
+.question-container.clicked {
+    background-color: #000000;
+    color: #FFFFFF;
+    z-index: 2; /* Asegúrate de que este valor sea mayor que el z-index de .answer.active */
+}
+
+
+.question-container.clicked .answer {
+    display: block; /* Muestra la respuesta al hacer clic en la pregunta */
+}
+
+.faq-container {
+    background-color: transparent; /* Fondo transparente */
+    color: #212529; /* Color de las letras */
+    padding: 1px 0px; /* Espaciado interno */
+    border: 0.5px solid #000; /* Color negro para los bordes */
+    margin: 18px; /* Espacio de 1px entre cada pregunta */
+}
+
+.accordion-button.bd-accordion-button {
+    color: #FF6620;
+    font-size: 16px;
+    font-family: "Miedinger", Arial, sans-serif;
+    background-color: transparent;
+    padding: 16px 20px;
+}
+
+/* Estilos para el bloque de contacto */
+section.text-center {
+    background-color: #ffffff; /* Fondo blanco */
+    margin: 0; /* Margen cero */
+    padding: 20px 200px; /* Padding 20px arriba/abajo, 200px izquierda/derecha */
+    text-align: center; /* Centrar el contenido del bloque */
+}
+
+section.text-center > div {
+    display: inline-block; /* Hacer que el contenedor interno se comporte como un bloque en línea */
+}
+
+section.text-center > div > div {
+    margin-bottom: 15px; /* Espacio inferior entre los elementos internos */
+}
+
+section.text-center a.d-block {
+    display: block; /* Hacer que el enlace sea un bloque para ocupar todo el ancho disponible */
+}
+
+/* Estilos para los títulos del footer */
+/* Estilos para los títulos del footer */
+.titulo-footer {
+    color: #212529; /* Cambiar color del título */
+    margin-bottom: 15px; /* Espacio inferior entre títulos */
+    text-decoration: underline; /* Subrayar el título */
+    text-decoration-color: #FF6620; /* Color de la línea de subrayado */
+    text-underline-offset: 5px; /* Agregar espacio al subrayado */
+    text-decoration-thickness: 2px; /* Aumentar el grosor del subrayado */
+}
+
+
+.detalles-footer li {
+    list-style: none; /* Eliminar viñetas de la lista */
+    margin-bottom: 10px; /* Espacio inferior entre elementos de la lista */
+}
+
+
+/* Estilos para ocultar el punto de la lista y eliminar el subrayado */
+.detalles-footer {
+    list-style-type: none; /* Ocultar el punto de la lista */
+    padding: 0; /* Eliminar el padding */
+}
+
+.detalles-footer a {
+    text-decoration: none; /* Eliminar el subrayado de los enlaces */
+    color: inherit; /* Heredar el color del texto */
+}
+
+/* Estilos para el icono del correo electrónico */
+.footer .svg-inline--fa.fa-envelope {
+    width: 16px; /* Ancho del icono */
+    height: 12px; /* Alto del icono */
+}
+
+.footer .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.text-center {
+    text-align: center; /* Centrar el texto horizontalmente */
+}
+
+.title {
+    margin-top: 2em; /* Espacio superior */
+    margin-bottom: 3em; /* Espacio inferior */
+}
+.title a {
+    text-decoration: none; /* Eliminar la decoración de texto para el enlace dentro de .title */
+    color: #212529;
+}
+
+
+.text-muted {
+    margin-top: 3em; /* Espacio superior */
+    margin-bottom: 3em; /* Espacio inferior */
+}
+.text-center.text-muted {
+    display: block; /* Cambiar a bloque para que ocupe todo el ancho disponible */
+    margin-top: 1em; /* Espacio superior */
+}
+
+
+
+

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Macros por Comidas</title>
+    <link rel="stylesheet" href="estilos-calculadora.css">
+</head>
+<body>
+    <!-- Cartel informativo -->
+    <div class="info-banner">
+        <p><strong>¡Atención!</strong> Esta es una versión beta de la Calculadora de Macros por Comidas.</p>
+        <p>Versión: 1.0.0</p>
+    </div>
+    
+    <div class="container">
+        <h1>Calculadora de Macros por Comidas</h1>
+
+        <!-- Datos del usuario -->
+        <div>
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad">
+        </div>
+        <div>
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso">
+        </div>
+        <div>
+            <label for="altura">Altura (cm):</label>
+            <input type="number" id="altura">
+        </div>
+        <div>
+            <label for="actividad">Nivel de Actividad:</label>
+            <select id="actividad">
+                <option value="1.2">Sedentario</option>
+                <option value="1.375">Ligera</option>
+                <option value="1.55">Moderada</option>
+                <option value="1.725">Intensa</option>
+                <option value="1.9">Muy intensa</option>
+            </select>
+        </div>
+
+        <!-- Agregar Alimento -->
+        <h2>Agregar Alimento</h2>
+        <div>
+            <label for="alimento-id">Alimento:</label>
+            <select id="alimento-id">
+                <!-- Opciones de alimentos serán agregadas por JavaScript -->
+            </select>
+        </div>
+        <div>
+            <label for="cantidad">Cantidad (g):</label>
+            <input type="number" id="cantidad">
+        </div>
+        <div>
+            <label for="comida">Comida:</label>
+            <select id="comida">
+                <option value="comida1">Comida 1</option>
+                <option value="comida2">Comida 2</option>
+                <option value="comida3">Comida 3</option>
+                <option value="comida4">Comida 4</option>
+                <option value="preEntreno">Pre-Entreno</option>
+                <option value="postEntreno">Post-Entreno</option>
+            </select>
+            <!-- Botón para mostrar/ocultar tabla de referencia -->
+            <button id="mostrar-tabla-ref-btn">Mostrar Tabla de Referencia</button>
+            <!-- Tabla de referencia oculta inicialmente -->
+            <div id="tabla-referencia" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Macronutriente</th>
+                            <th>Cantidad (g)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Proteínas</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>Carbohidratos</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Grasas</td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button id="agregar-btn">Agregar</button>
+
+        <!-- Resultados -->
+        <h2>Resultados</h2>
+        <div id="resultado">
+            <!-- Aquí se mostrarán los resultados de los cálculos -->
+        </div>
+    </div>
+
+    <!-- Tabla de alimentos por comida -->
+    <div class="container">
+        <table id="tabla-alimentos">
+            <thead>
+                <tr>
+                    <th>Comida</th>
+                    <th>Alimento</th>
+                    <th>Proteínas (g)</th>
+                    <th>Carbohidratos (g)</th>
+                    <th>Grasas (g)</th>
+                    <th>Faltante</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Contenido de la tabla se agregará por JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script-calculadora.js"></script>
+</body>
+</html>

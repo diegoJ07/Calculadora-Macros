@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jesus Gallego | Entrenador Personal | Madrid</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Incluir la biblioteca Papa Parse utilizando un CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z8vwYyTKxAjFtMSc5J2qA6tQ45Cr8an2F/1nW2" crossorigin="anonymous"></script>
-
+    <title>Calculadora</title>
 </head>
 <header>
     <nav class="navbar">
@@ -20,129 +17,162 @@
         <div class="navbar-login">
             <button id="login-button">Iniciar Sesión <i class="fa fa-angle-down"></i></button>
             <div class="login-box">
-                <input id="usuario" type="text" placeholder="Usuario">
-                <input id="contraseña" type="password" placeholder="Contraseña">
-                <button onclick="validarInicioSesion()">Iniciar Sesión</button>
+                <input type="text" placeholder="Usuario">
+                <input type="password" placeholder="Contraseña">
+                <button>Iniciar Sesión</button>
             </div>
         </div>
     </nav>
-    
 </header>
 <body>
     <section class="body-general">
-    <h2>Si la gente supiera que es posible cambiar su físico (perder grasa y ganar masa muscular) entrenando solo 4 horas a la semana y comiendo lo que les apetece…</h2>
-    <h3>(Y sí, eso incluye hamburguesas, chocolate, patatas fritas y cervecitas…)</h3>
-    <img src="/imagenes/jg-con-flecha.jpg">
-    <div>
-        <strong>
-            Evitarían dos cosas:
-        </strong>
-        <ul>
-            <li>Pensar que cuantas más horas estés en el gimnasio, antes llegarás a tu objetivo. </li>
-            <li>Pagar absurdas cantidades de dinero por dietas con efecto rebote y menos sabor que un trozo de cartón reciclado. </li>
-        </ul>
-    </div>
-    <p>
-        <strong >Para estar en forma no hay que renunciar a comer lo que te gusta, ni ir todos los días al gimnasio</strong>.
-    </p>
-    <p >
-        Pero antes de seguir leyendo, te aviso de que aquí no encontrarás humo.
-    </p>
-    <p >
-        En ningún momento leerás cosas como "Pierde grasa en 7 días con el mejor tratamiento para controlar el apetito"
-    </p>
-    <p >
-        Yo no soporto la publicidad engañosa y a ti seguro que tampoco te gusta que te mientan.
-    </p>
-    <p >
-        Voy a ir al grano:
-    </p>
-    <p >
-        Tengo una membresía en la que consigues <strong >
-            cambiar tu físico comiendo lo que quieras ajustando cantidades y entrenando 4 días a la semana durante una hora
-        </strong>.
-    </p>
-    <p >
-        El precio es mayor del que te piden la mayoría de los entrenadores.
-    </p>
-    <h3>Pero hay una diferencia entre la mayoría de los entrenadores y los buenos entrenadores.</h3>
-    <p >
-        Y los buenos sabemos que para conseguir ganar masa muscular o perder grasa es suficiente con pasar el mínimo tiempo efectivo en el gimnasio y que, para conseguir resultados, tienes que comer sin prohibirte alimentos.
-    </p>
-    <p >
-        Es normal que esto te chirríe. Llevas años escuchando lo contrario: entrena más y come menos.
-    </p>
-    <p >
-        Y por poder, puedes entrenar más tiempo y seguir dietas restrictivas si quieres, pero eso no te hará progresar más rápido.
-    </p>
-    <p >
-        Pero si prefieres seguir el camino inteligente, tienes la membresía de la que te hablo con 3 modalidades donde elegir:
-    </p>
-    <div class="ms-3 mb 5">
-        <div class="row" >
-            <div class="col-lg-6 col-xl-4 col-12 mb-3">
-                <div class="card h-100">
-                    <div class="text-center">
-                        <img src="imagenes/huecos-flecha.jpg" class="card-img-top img-ajustada d-inline w-50 rounded-0" width="1" height="1" alt="Bronze" -v-a3c9bf0e="" style="background-color: rgb(205, 127, 48);">
-                    </div>
-                </div>
-            </div>
+        <h2>Lo de contar las calorías de cada comida es para gente con mucho tiempo y mucha fuerza de voluntad.</h2>
+        <h3>Menos mal que hay una manera más fácil de conseguir perder grasa o ganar masa muscular…</h3>
+        <img src="/imagenes/jg-calma.jpg">
+        <p>
+            Nos gastamos mucho dinero y mucho tiempo en hacer dietas restrictivas para conseguir el cuerpo que queremos.
+        </p>
+        <p>
+            El problema es que duramos muy poco con esas dietas sosas, insípidas y con menos gracia que quedarse sin papel en un baño público.
+        </p>
+        <p>
+            Hay algo importante que debes saber:
+        </p>
+        <div>
+            <strong>
+                El físico de revista que quieres tiene mucho Photoshop y la versión realista solo se consigue comiendo lo que te da la gana.
+            </strong>
         </div>
-    </div>
-    <h2 class="mb-4">
-        ¿QUÉ SIGNIFICA CADA PUNTO INCLUIDO EN LAS 3 OPCIONES?
-    </h2>
-    <p >
-        <strong class="orange-text">Confección de dietas por macros:</strong> nosotros te indicaremos los macros diarios que debes consumir, y la aplicación los distribuirá automáticamente entre las diferentes comidas del día siguiendo el método que aplicamos con éxito en nuestros clientes.
-    </p>
-    <p >
-        <strong class="orange-text">Vídeos tutoriales:</strong>  cuando te apuntes, te proporcionaremos la fecha exacta de inicio para tu programa, pero desde ese momento tendrás acceso a la aplicación con unos macros provisionales y te explicaremos cómo funciona mediante unos vídeos tutoriales que te enseñarán a utilizarla perfectamente.
-    </p>
-    <p >
-        <strong class="orange-text">Suplementación:</strong>  a menos que decidas prescindir de ella, también recibirás un plan de suplementación personalizado con instrucciones precisas sobre su uso. Además, te daremos un código especial con el que tendrás un descuento del 20 % en todos los productos de FullGas, la marca con la que colaboramos desde hace casi una década (aunque eres libre de elegir cualquier otra, ya que las encontrarás todas en la calculadora).
-    </p>
-    <p >
-        <strong class="orange-text">Histórico de dietas almacenadas:</strong>  todas tus dietas quedarán guardadas con sus respectivas fechas, lo que te permitirá llevar un control total y ser consciente de si las has seguido o no. Toda esta información la revisaremos cada 4 semanas para hacer los ajustes necesarios.
-    </p>
-    <p >
-        <strong class="orange-text">Dietas favoritas:</strong>  podrás etiquetar como "favoritas" aquellas dietas que más te gusten y reutilizarlas en el futuro, replicándolas tal cual o con pequeños ajustes. De esta manera, podrás hacer la dieta de una semana entera en menos de 10 minutos.
-    </p>
-    <p >
-        <strong class="orange-text">Buscador de alimentos:</strong>  tendrás acceso a una amplia base de datos con el valor nutricional de miles de alimentos y que actualizamos semanalmente. Todos los alimentos incluyen enlaces para que veas exactamente de qué se trata y no tengas problemas para encontrarlos en cualquier supermercado.
-    </p>
-    <p >
-        <strong class="orange-text">Sugerir alimentos:</strong>  si hay algún alimento en particular que quieras y no se encuentre en nuestra base de datos, solo tienes que solicitarlo a través del teléfono de asistencia técnica, y en un plazo máximo de 7 días lo incluiremos.
-    </p>
-    <p >
-        <strong class="orange-text">Ajustes cada 4 semanas:</strong>  controlaremos tus progresos y revisaremos tu programa cada 28 días mediante un reporte similar al del cuestionario que recibirás al inicio. En este informe, te pediremos fotos, perímetros corporales y otros datos necesarios para valorar tu evolución de forma objetiva y hacer los ajustes necesarios para que puedas progresar más rápido.
-    </p>
-    <p >
-        <strong class="orange-text">Asistencia técnica ilimitada:</strong>  tendrás a tu disposición un número de WhatsApp para resolver cualquier problema relacionado con el funcionamiento de la aplicación en un plazo máximo de 24 horas.
-    </p>
-    <p >
-        <strong class="orange-text">Soporte para dudas puntuales:</strong>  también te proporcionaremos otro teléfono distinto en caso de que surjan dudas puntuales o desees contratar algún servicio extra, como las revisiones presenciales o la elaboración de menús personalizados. Siempre respondemos en menos de 24 horas.
-    </p>
-    <p >
-        <strong class="orange-text">Contenidos extra:</strong>  si te interesa el tema de la nutrición y la suplementación o quieres profundizar más acerca de lo que es el método en sí, te daremos acceso a nuestra galería privada de vídeos.
-    </p>
-    <p >
-        <strong class="orange-text">Rutina de entrenamiento de fuerza adaptada a tu nivel (solo si estás en el plan Silver):</strong>  tendrás una rutina de fuerza distinta cada mes, adaptada a tu nivel (básica o avanzada) y con todos los ejercicios que la integran grabados y explicados al detalle.
-    </p>
-    <p >
-        <strong class="orange-text">Rutina de entrenamiento 100 % personalizada (solo si estás en el plan Gold):</strong>  tendrás una rutina de fuerza distinta cada mes, completamente adaptada a ti, con todos los ejercicios que la integran grabados y explicados al detalle, pero además podrás consultar dudas siempre que lo necesites vía WhatsApp.
-    </p>
-    <p >
-        <strong class="orange-text">Programa de ejercicio aeróbico (solo si estás en el plan Gold):</strong>  aunque no será la parte principal, también te detallaremos cuánto, cómo y cuándo hacer el ejercicio cardiovascular con el que complementarás el programa.
-    </p>
-    <p >
-        <strong class="orange-text">Ajustes cada 2 semanas (solo si estás en el plan Gold):</strong>  controlaremos tus progresos y revisaremos tu programa cada 28 días mediante un reporte similar al del cuestionario que recibirás al inicio. No obstante, te contactaremos cada 2 semanas por si fuera necesario hacer algún ajuste antes.
-    </p>
-    <p >
-        <strong class="orange-text">Informe mensual (solo si estás en el plan Gold):</strong>  cuando llegue el momento de revisar tu programa, recibirás un audio en el que te proporcionaremos feedback acerca de tu evolución para que seas consciente de cómo consideramos que estás progresando.
-    </p>
-    <p >
-        <strong class="orange-text">Soporte para dudas 24/7 (solo si estás en el plan Gold):</strong>  además del de asistencia técnica, tendrás otro teléfono para resolver cualquier duda que te surja o si deseas contratar algún servicio extra, como las revisiones presenciales o la elaboración de menús personalizados. Siempre respondemos en menos de 24 horas.
-    </p>
+        <p>
+            ¿Lo que te da la gana?
+        </p>
+        <p>
+            Sí.
+        </p>
+        <p>
+            Con las típicas dietas de toda la vida es muy poco probable que consigas cambiar tu físico…
+        </p>
+        <p>
+            Porque por mucha motivación que tengas, vas a <strong>de comer todos los días lo mismo, 
+            tendrás ansiedad por comerte una buena hamburguesa y terminarás cediendo ante la tentación de la primera guarrería que te encuentres 
+            por la nevera.</strong>
+        </p>
+        <p>
+            Y el río de remordimientos desemboca en dos caminos: o tiras la toalla,
+            o vuelves a castigarte con merluza y brócoli hasta que vuelva a fallarte la fuerza de voluntad.
+        </p>
+        <p>
+            <strong>
+                Dieta (a la carta).
+            </strong>
+        </p>
+        <p>
+            enemos que dejar de asociar la palabra dieta con una nutrición restrictiva y 
+            ser más flexibles con lo que comemos para conseguir el cuerpo que queremos y que dure todo el año (no solo las vacaciones de verano).
+        </p>
+        <p>
+            ¿Cómo?
+        </p>
+        <p>
+            Ajustando los macronutrientes <strong>(hidratos de carbono, grasas y proteínas)</strong> que necesitas para ver resultados siguiendo una dieta a tu gusto.
+        </p>
+        <p>
+            Importan los macronutrientes, no los alimentos. Da igual qué comas, si respetas los macronutrientes que te aportan los alimentos,
+            vas a conseguir tu objetivo antes y mejor.
+        </p>
+        <p>
+            ¿Significa que puedes cenar todos los días un donut?
+        </p>
+        <p>
+            Sí. Quiero decirte, si lo cuadras con el resto de las comidas, por supuesto
+        </p>
+        <p>
+            Seguirás camino a tu objetivo igual de bien y, encima, más relajado y sin la úlcera que te provoca pensar que "estás a dieta”.
+        </p>
+        <p>
+            Pero hay un problema:
+        </p>
+        <p>
+            Si ponerte a cocinar ya da pereza, imagínate ponerte a pesar alimentos, 
+            contar calorías y cuadrar los macronutrientes que te acercan a tu objetivo.
+        </p>
+        <p>
+            Por eso tengo esto:
+        </p>
+        <p>
+            <strong>La calculadora de macros.</strong>
+        </p>
+        <p>
+            Una aplicación que, más que “calcular”, lo que te va a permitir es construir una dieta a tu gusto todos los días,
+            sin necesidad de tener ni idea de nutrición.
+        </p>
+        <p>
+            Tú simplemente tienes que preocuparte de decidir qué quieres comer y ella te dice automáticamente cuánto 
+            comer de cada alimento en base a la cantidad de macros que te pauto personalmente según mi experiencia de más de 20 
+            años en el mundo del entrenamiento.
+        </p>
+        <p>
+            Una aplicación con la que vas a romper con las dietas comunes porque, repito, 
+            lo importante no es lo que comes sino los macronutrientes que comes.
+        </p>
+        <p>
+            A diferencia del resto de calculadoras, la clave no está en pensar cómo cuadras macros cada día, 
+            sino en qué te apetece comer para que la calculadora lo cuadre automáticamente.
+        </p>
+        <p>
+            Tal cual.
+        </p>
+        <p>
+            Así que, para perder grasa o ganar masa muscular sin dejar de comer lo que te hace salivar, tienes dos opciones:
+        </p>
+        <section class="productos">
+            <div class="calculadora-premium">
+                <h2>CALCULADORA PREMIUM</h2>
+            </div>
+            <li><strong>Acceso a la Calculadora.</strong><span>Tú eliges qué quieres comer y ella te dice cuánto comer.</span></li>
+            <li><span>Crea <strong>menús semanales a tu gusto en 10 minutos.</strong></span</li>
+            <li><span><strong>Más de 3000 opciones de alimentos </strong>(frescos, preparados, un minuto al micro, sanotes, guarrerías…), 
+                que vamos ampliando todas las semanas en base a tus sugerencias.</span></li>
+            <li><span><strong>Reparto automático de los macros en 4 comidas al día</strong> según mi método, 
+                aunque si hacer tantas comidas al día te estresa puedes hacerlo en menos 
+                (mientras al final del día todo cuadre, el reparto importa menos).</span></li>
+            <li><span><strong>Soporte técnico</strong> 24 horas y 7 días a la semana.</span></li>
+            <li><span><strong>Yo te asigno los macros y la suplementación bajo mi experiencia 
+                </strong>(cómo lo hago es el secreto de la Coca-Cola y vale más que la calculadora).</span></li>
+            <li><span><strong>Hago personalmente los ajustes en tus macros cada 4 semanas </strong>és de valorar tu progreso con fotos, 
+                medidas corporales y un formulario donde me cuentas qué tal han ido las semanas.</span></li>
+            <div class="button-calculadora">
+                <button id="Calculadora">¡LA QUIERO!</button>
+            </div>
+            <div class="calculadora-jp">
+                <h2>CALCULADORA JP</h2>
+            </div>
+            <li><strong>Lo mismo que incluye la premium menos mi intervención.</strong><span>Es decir, tienes acceso completo a la calculadora, 
+                pero tú te asignas los macros y los alimentos. Te haces los ajustes sin contar con mi supervisión y experiencia. 
+                Igual es tu opción si sigues la dieta de otro entrenador o nutricionista o quieres autogestionarte los macros a lo Juan Palomo, 
+                yo me lo guiso, yo me lo como.</span></li>
+                <div class="button-calculadora">
+                    <button id="Calculadora">¡LA QUIERO!</button>
+                </div>
+    </section>
+    <section class="calculadora-gratuita">
+
+        <div class="gratuita">
+            <h3>¿NO TE FÍAS?</h3>
+        </div>
+        <p>Es normal que esto te chirríe. Llevas años escuchando lo contrario: entrena más y come menos.</p>
+        <p>Por poder, <strong> entrenar más tiempo y seguir dietas restrictivas si quieres, pero eso no te hará progresar más rápido.</strong>
+            Ni tampoco es sostenible a largo plazo.</p>
+        <p>Pero, si aun así, esto te sigue sonando raro, <strong>probar la versión gratuita de la calculadora y 
+            comprobar que puedes seguir comiendo tus platos favoritos y conseguir tu cambio físico.</strong></p>
+        <p>¿Cómo hacerlo?</p>
+        <p>Sencillo: te das de alta, marcas la opción que más se ajuste a tu perfil y entonces tendrás acceso gratuito a la 
+            aplicación con unos macros provisionales que yo te voy a asignar en base a tu respuesta.</p>
+            <div class="button-calculadora-gratuita">
+                <button id="Calculadora">¡LA QUIERO!</button>
+            </div>
+    </section>
+    </section>
     <section data-v-a3c9bf0e="">
         <h2 class="my-5" data-v-a3c9bf0e="">Igual tienes preguntas y es posible que se resuelvan con estas respuestas</h2>
         <div id="faqs" class="faq-container accordion" data-v-23c85a91="" data-v-a3c9bf0e="">
@@ -336,16 +366,7 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script-calculadora.js"></script>
     <script src="script.js"></script>
-    <section id="video" class="text-center" >
-        <div class="fw bold mb-3" >Puedes ver el siguiente vídeo para acabar de resolver alguna duda</div>
-        <div class="mx-auto mb-4" >
-            <div >
-                <iframe></iframe>
-            </div>
-        </div>
-    </section>
     <section class="text-center" >
         <div >
             <div class="mb-3" >

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jesus Gallego | Entrenador Personal | Madrid</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z8vwYyTKxAjFtMSc5J2qA6tQ45Cr8an2F/1nW2" crossorigin="anonymous"></script>
+    
+    </head>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="./dieta.html">Dieta</a></li>
+                <li><a href="./suplementacion.html">Suplementación</a></li>
+                <li><a href="#">Mi Perfil</a></li>
+                <li><a href="#">Buscador de Alimentos</a></li>
+                <li class="navbar-administration">
+                    <a href="#">Administración <i class="fa fa-angle-down"></i></a>
+                    <div class="admin-menu">
+                        <ul>
+                            <li><a href="#">Alimentos</a></li>
+                            <li><a href="#">Suplementos</a></li>
+                            <li><a href="./calcular-macros.html">Calcular Macros</a></li>
+                            <li><a href="#">Administración Cliente</a></li>
+                            <li><a href="#">Pedidos</a></li>
+                            <li><a href="#">Miembros</a></li>
+                            <li><a href="#">Reto de Verano</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Macros</a></li>
+                <li><a href="/index.html">Salir</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+<body>
+    <section id="dieta">
+        <h2 class="dieta-title">Programar Dieta</h2>
+        <div>
+            <label for="fecha" class="elige-fecha">Elige Fecha:</label>
+            <input type="text" id="fecha" onclick="mostrarCalendario()">
+            <div id="calendario" style="display: none;">
+                <!-- Aquí se mostrará el calendario -->
+                <div id="calendar"></div>
+            </div>
+        </div>
+        <div>
+            <label for="tipoDia" class="tipo-dia"></label>
+            <select id="tipoDia" onchange="seleccionarTipoDia()">
+                <option value="entrenamiento">Es día de Entrenamiento</option>
+                <option value="descanso">Es día de Descanso</option>
+            </select>
+        </div>
+        <div>
+            <label for="cuandoEntrenas" class="cuando-entrenas">Entrenas </label>
+            <select id="cuandoEntrenas" onchange="seleccionarOpcion()">
+                <option value="ayunas">En Ayunas</option>
+                <option value="despuesComida1">Después de Comida 1</option>
+                <option value="despuesComida2">Después de Comida 2 o variable</option>
+                <option value="despuesComida3">Después de Comida 3</option>
+            </select>
+        </div>
+    </section>
+        </div>
+        <div class="macros-container">
+            <!-- Tabla para intraentreno -->
+            <div class="macros-table" id="intraentreno">
+                <h3>Macros para intraentreno</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>10g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>24g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para postentreno -->
+            <div class="macros-table" id="postentreno">
+                <h3>Macros para postentreno</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>40g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>56g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <div class="macros-table" id="comida1">
+                <h3>Macros para comida 1</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>14g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 2 -->
+            <div class="macros-table" id="comida2">
+                <h3>Macros para comida 2</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>17.5g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 3 -->
+            <div class="macros-table" id="comida3">
+                <h3>Macros para comida 3</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>46g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>17.5g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 4 -->
+            <div class="macros-table" id="comida4">
+                <h3>Macros para comida 4</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>69g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>21g</td>
+                    </tr>
+                </table>
+            </div>
+          
+            <!-- Tabla para comida 1 -->
+            <div class="macros-table" id="comida5"  style="display: none;">
+                <h3>Macros para comida 1</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>21g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 2 -->
+            <div class="macros-table" id="comida6" style="display: none;">
+                <h3>Macros para comida 2</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>14g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 3 -->
+            <div class="macros-table" id="comida7" style="display: none;">
+                <h3>Macros para comida 3</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>14g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 4 -->
+            <div class="macros-table" id="comida8" style="display: none;">
+                <h3>Macros para comida 4</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>69g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>21g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 1 -->
+            <div class="macros-table" id="comida9" style="display: none;">
+                <h3>Macros para comida 1</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>21g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 2 -->
+            <div class="macros-table" id="comida10" style="display: none;">
+                <h3>Macros para comida 2</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>46g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>14g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 3 -->
+            <div class="macros-table" id="comida11" style="display: none;">
+                <h3>Macros para comida 3</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>14g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 4 -->
+            <div class="macros-table" id="comida12" style="display: none;">
+                <h3>Macros para comida 4</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>69g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>21g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+            
+            <!-- Tabla para comida 1 -->
+            <div class="macros-table" id="comida13" style="display: none;">
+                <h3>Macros para comida 1</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>69g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>21g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 2 -->
+            <div class="macros-table" id="comida14" style="display: none;">
+                <h3>Macros para comida 2</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>80g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>21g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 3 -->
+            <div class="macros-table" id="comida15" style="display: none;">
+                <h3>Macros para comida 3</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>46g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>14g</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+          
+            <!-- Tabla para comida 4 -->
+            <div class="macros-table" id="comida16" style="display: none;">
+                <h3>Macros para comida 4</h3>
+                <table>
+                    <tr>
+                        <th>PROTEÍNAS</th>
+                        <td>57.5g</td>
+                    </tr>
+                    <tr>
+                        <th>HIDRATOS</th>
+                        <td>120g</td>
+                    </tr>
+                    <tr>
+                        <th>GRASAS</th>
+                        <td>14g</td>
+                    </tr>
+                </table>
+            </div>
+          </div>
+          
+        
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="calcularProteinas.js"></script>
+</body>
+</html>
