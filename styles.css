@@ -97,6 +97,23 @@
     }
 }
 
+/* Estilos para centrar y cambiar la fuente */
+.actualizacion {
+    padding-top: 55px;
+    text-align: center;
+    font-family: Arial, sans-serif; /* Puedes cambiar la fuente aquí */
+}
+
+.actualizacion-h2,
+.actualizacion-h3 {
+    font-family: Arial, sans-serif; /* Puedes cambiar la fuente aquí */
+}
+
+.imagen-actualizacion img {
+    max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
+}
+
+
 
 .container {
     max-width: calc(100% - 60px); /* Ancho máximo del contenido, restando 60px para el espacio a los lados */
